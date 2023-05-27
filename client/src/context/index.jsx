@@ -135,7 +135,8 @@ export const GlobalContextProvider = ({ children }) => {
             showAlert, setShowAlert,
             battleName, setBallteName, gameData, battleGround, setBattleGround,
             errorMessage, setErrorMessage,
-            player2Ref, player1Ref
+            player2Ref, player1Ref,
+            updateCurrentWalletAddress
         }}>
             {children}
         </GlobalContext.Provider>

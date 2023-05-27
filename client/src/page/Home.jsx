@@ -4,7 +4,7 @@ import { useGlobalContext } from '../context';
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate()
-  const { contract, walletAddress, setShowAlert } = useGlobalContext();
+  const { contract, walletAddress, setShowAlert , gameData,setErrorMessage} = useGlobalContext();
   const [playerName, setPlayerName] = useState('')
 
   const handleClick = async () => {
@@ -21,11 +21,7 @@ const Home = () => {
 
       }
     } catch (error) {
-      setShowAlert({
-        status: true,
-        type: 'failure',
-        message: "Something went wrong",
-      });
+      setErrorMessage(error)
     }
   }
   useEffect(() => {
@@ -34,8 +30,13 @@ const Home = () => {
       const playerTokenExists = await contract.isPlayerToken(walletAddress)
       if (playerExists && playerTokenExists) navigate('/createbattle')
     }
-    if(contract) createPlayerToken()
+    if (contract) createPlayerToken()
   }, [contract])
+  useEffect(() => {
+    if(gameData.activeBattles){
+      navigate(`/battle/${gameData.activeBattles.name}`)
+    }
+  }, [gameData])
   return (
     <div>
       <div className='flex flex-col'>

@@ -6,7 +6,9 @@ import { CustomInput, PageHOC, RegisterButton } from '../components';
 const JoinBattle = () => {
     const { contract, gameData, showAlert, walletAddress, setBallteName, setErrorMessage } = useGlobalContext();
     const navigate = useNavigate()
-
+    useEffect(() => {
+        if (gameData?.activeBattle?.battleStatus === 1) navigate(`/battle/${gameData.activeBattles.name}`)
+    }, [])
     const handleClick = async (battleName) => {
         setBallteName(battleName)
         try {
@@ -26,7 +28,7 @@ const JoinBattle = () => {
                         .map((battle, index) => (
                             <div key={battle.name + index} className={styles.flexBetween}>
                                 <p className={styles.joinBattleTitle}>
-                                    
+
                                     {
                                         index + 1
                                     }.
