@@ -58,6 +58,6 @@ const Home = () => {
 
 export default PageHOC(
   Home,
-  <>Welcome to AVAX Gods <br /> a Web3 NFT Card Game</>,
-  <>Connect your wallet to start the Game <br /> the ultimate Battle Card Game</>
+  <>Enter the World of NFT Battles with AVAX Gods</>,
+  <>Connect Your Wallet and Unleash the Power in<br /> the ultimate Battle Card Game</>
 );
