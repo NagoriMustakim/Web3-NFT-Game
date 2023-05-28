@@ -88,7 +88,7 @@ const styles = {
   alertIcon: 'flex-shrink-0 inline w-6 h-6 mr-2',
 
   // modal
-  modalText: 'font-rajdhani font-bold text-3xl text-white mb-6 text-center',
+  modalText: 'font-rajdhani font-bold text-4xl text-black-200 mb-6 text-center',
 };
 
 export default styles;

@@ -33,7 +33,7 @@ const PageHOC = (Component, title, description) => () => {
                 </div>
             </div>
         </div >
-
+        // <></>
 
 
     );

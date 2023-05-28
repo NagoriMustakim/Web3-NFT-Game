@@ -8,7 +8,7 @@ const Home = () => {
   const [playerName, setPlayerName] = useState('')
 
   const handleClick = async () => {
-    if(!walletAddress){
+    if (!walletAddress) {
       setShowAlert({
         status: true,
         type: 'info',

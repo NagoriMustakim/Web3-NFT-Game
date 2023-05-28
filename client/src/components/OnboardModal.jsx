@@ -88,7 +88,8 @@ const OnboardModal = () => {
   return (
     <Modal
       isOpen={modalIsOpen}
-      className={`absolute inset-0 ${styles.flexCenter} flex-col ${styles.glassEffect}`}
+      className={` justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ${styles.flexCenter}  ${styles.glassEffect}`}
+      // className={`justify-center items-center flex overflow-x-hidden  fixed inset-0 z-50 outline-none focus:outline-none ${styles.glassEffect}`}
       overlayClassName="Overlay"
     >
       {generateStep(step)}
