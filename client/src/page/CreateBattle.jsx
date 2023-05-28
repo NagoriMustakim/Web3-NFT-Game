@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { CustomInput, PageHOC, RegisterButton, GameLoad } from '../components';
 const CreateBattle = () => {
     const navigate = useNavigate()
-    const { battleName, setBallteName, contract, gameData, setErrorMessage } = useGlobalContext()
+    const { battleName, setBallteName, contract, gameData, setErrorMessage, setShowAlert, walletAddress } = useGlobalContext()
     const [waitBattle, setWaitBattle] = useState(false)
 
     useEffect(() => {
+        if (!walletAddress) navigate('/')
         if (gameData?.activeBattle?.battleStatus === 1) {
             navigate(`/battle/${gameData.activeBattle.name}`)
         }
@@ -17,7 +18,16 @@ const CreateBattle = () => {
         }
     }, [gameData])
     const handleClick = async () => {
-        if (!battleName || !battleName.trim()) return null
+        if (!battleName || !battleName.trim()) {
+            setShowAlert({
+                status: true,
+                type: 'info',
+                message: 'Enter battle Name',
+            });
+
+            return null
+
+        }
         try {
 
             await contract.createBattle(battleName)

@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { PageHOC, CustomInput, RegisterButton, Alert } from '../components';
+import { PageHOC, CustomInput, RegisterButton } from '../components';
 import { useGlobalContext } from '../context';
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate()
-  const { contract, walletAddress, setShowAlert , gameData,setErrorMessage} = useGlobalContext();
+  const { contract, walletAddress, setShowAlert, gameData, setErrorMessage } = useGlobalContext();
   const [playerName, setPlayerName] = useState('')
 
   const handleClick = async () => {
+    if(!walletAddress){
+      setShowAlert({
+        status: true,
+        type: 'info',
+        message: 'Connect your wallet',
+      });
+      return null
+    }
+    if (!playerName) {
+      setShowAlert({
+        status: true,
+        type: 'info',
+        message: 'Enter Player name',
+      });
+      return null
+    }
     try {
       const playerExists = await contract.isPlayer(walletAddress);
       if (!playerExists) {
@@ -33,7 +49,7 @@ const Home = () => {
     if (contract) createPlayerToken()
   }, [contract])
   useEffect(() => {
-    if(gameData.activeBattles){
+    if (gameData.activeBattles) {
       navigate(`/battle/${gameData.activeBattles.name}`)
     }
   }, [gameData])
@@ -58,6 +74,6 @@ const Home = () => {
 
 export default PageHOC(
   Home,
-  <>Enter the World of NFT Battles with AVAX Gods</>,
+  <>Enter the World of NFT Battles with Your Token</>,
   <>Connect Your Wallet and Unleash the Power in<br /> the ultimate Battle Card Game</>
 );

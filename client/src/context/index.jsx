@@ -28,8 +28,10 @@ export const GlobalContextProvider = ({ children }) => {
         if (accounts) setWalletAddress(accounts[0])
     }
     useEffect(() => {
-        updateCurrentWalletAddress()
-        window.ethereum.on('accountsChanged', updateCurrentWalletAddress)
+        if (window.ethereum) {
+            updateCurrentWalletAddress()
+            window.ethereum.on('accountsChanged', updateCurrentWalletAddress)
+        }
     }, [])
 
 
