@@ -5,3 +5,9 @@
 ![NFT Game - Google Chrome 5_27_2023 11_45_34 AM](https://github.com/NagoriMustakim/Web3-NFT-Game/assets/97384395/0719a224-9379-42c0-bc05-add2b3b1ed41)
 
 ....loading.
+
+
+# devs
+ 1. Mustakim
+ 2. Yuvraj
+ 3. Khisan
